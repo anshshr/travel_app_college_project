@@ -1,0 +1,26 @@
+/* Add this to home_style.css */
+nav {
+    background-color: #333; /* Dark background */
+    padding: 10px 20px; /* Padding around the nav */
+}
+
+nav ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    display: flex; /* Flex layout for horizontal menu */
+}
+
+nav ul li {
+    margin-right: 20px; /* Space between items */
+}
+
+nav ul li a {
+    color: white; /* White text color */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold text */
+}
+
+nav ul li a:hover {
+    text-decoration: underline; /* Underline on hover */
+}

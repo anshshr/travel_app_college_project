@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Settings</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        .settings-container {
+            max-width: 600px;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        .settings-section {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .switch input {
+            display: none;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #4CAF50;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        select {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        /* Dark mode styles */
+        .dark-mode {
+            background-color: #333;
+            color: white;
+        }
+
+        .dark-mode .settings-container {
+            background-color: #444;
+            color: white;
+        }
+
+        /* Logout button */
+        .logout-btn {
+            display: block;
+            margin: 30px auto;
+            background-color: #ff4d4d;
+        }
+
+        .logout-btn:hover {
+            background-color: #ff1a1a;
+        }
+    </style>
+</head>
+<body>
+    <div class="settings-container">
+        <h1>Settings</h1>
+
+        <!-- Theme Settings -->
+        <div class="settings-section">
+            <h2>Theme</h2>
+            <label class="switch">
+                <input type="checkbox" id="themeToggle">
+                <span class="slider"></span>
+            </label>
+            <span id="themeLabel">Light Mode</span>
+        </div>
+
+        <!-- Notifications Settings -->
+        <div class="settings-section">
+            <h2>Notifications</h2>
+            <label class="switch">
+                <input type="checkbox" id="notificationsToggle">
+                <span class="slider"></span>
+            </label>
+            <span id="notificationsLabel">Notifications Enabled</span>
+        </div>
+
+        <!-- Language Settings -->
+        <div class="settings-section">
+            <h2>Language</h2>
+            <select id="languageSelect">
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+            </select>
+        </div>
+
+        <!-- Account Settings -->
+        <div class="settings-section">
+            <h2>Account</h2>
+            <button id="changePasswordBtn">Change Password</button>
+            <button id="deleteAccountBtn">Delete Account</button>
+        </div>
+
+        <!-- Logout Button -->
+        <button class="logout-btn" id="logoutBtn">Logout</button>
+    </div>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeLabel = document.getElementById('themeLabel');
+
+        themeToggle.addEventListener('change', function () {
+            if (themeToggle.checked) {
+                document.body.classList.add('dark-mode');
+                themeLabel.textContent = 'Dark Mode';
+            } else {
+                document.body.classList.remove('dark-mode');
+                themeLabel.textContent = 'Light Mode';
+            }
+        });
+
+        // Notifications toggle functionality
+        const notificationsToggle = document.getElementById('notificationsToggle');
+        const notificationsLabel = document.getElementById('notificationsLabel');
+
+        notificationsToggle.addEventListener('change', function () {
+            if (notificationsToggle.checked) {
+                notificationsLabel.textContent = 'Notifications Enabled';
+            } else {
+                notificationsLabel.textContent = 'Notifications Disabled';
+            }
+        });
+
+        // Language selection functionality
+        const languageSelect = document.getElementById('languageSelect');
+        languageSelect.addEventListener('change', function () {
+            const selectedLanguage = languageSelect.value;
+            alert('Language changed to: ' + selectedLanguage);
+        });
+
+        // Account actions
+        document.getElementById('changePasswordBtn').addEventListener('click', function () {
+            alert('Redirecting to change password...');
+        });
+
+        document.getElementById('deleteAccountBtn').addEventListener('click', function () {
+            if (confirm('Are you sure you want to delete your account?')) {
+                alert('Account deleted.');
+            }
+        });
+
+        // Logout button functionality
+        document.getElementById('logoutBtn').addEventListener('click', function () {
+            window.location.href = "index.html";  // Redirect to index.html
+        });
+    </script>
+</body>
+</html>
