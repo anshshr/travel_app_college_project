@@ -18,8 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "this is not working at all";
     $name = $_POST["name"];
     $email = $_POST["email"];
-    $password = $_POST["password"]; // Always hash the password in a real application
-
+    $password = $_POST["password"]; 
     $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')";
 
 
